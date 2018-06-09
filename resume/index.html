@@ -7,6 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My resume</title>
     <link rel="stylesheet" href="main.css">
+    <script src="//at.alicdn.com/t/font_700591_dzy6l1mx5q5pcik9.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,34 +24,41 @@
     <body>
 
         <div class="topNavBar">
-            <a class="logo" href="" alt="logo">
-                <span class="rs">RS</span><span class="card">card</span>
-            </a>
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="">SKILLS</a></li>
-                    <li><a href="">EXPERIENCE</a></li>
-                    <li><a href="">PRICING</a></li>
-                    <li><a href="">BLOG</a></li>
-                    <li><a href="">CALENDAR</a></li>
-                    <li><a href="">CONTACT</a></li>
-                    <li><a href="">OTHER</a></li>
-                    <li><a href="">ALL DEMOS</a></li>
-                </ul>
-            </nav>
+            <div class="topNavBar-inner clearfix">
+                <a class="logo" href="" alt="logo">
+                    <span class="rs">RS</span><span class="card">card</span>
+                </a>
+                <nav>
+                    <ul class="clearfix">
+                        <li><a href="">ABOUT</a></li>
+                        <li><a href="">SKILLS</a></li>
+                        <li><a href="">EXPERIENCE</a></li>
+                        <li><a href="">PRICING</a></li>
+                        <li><a href="">BLOG</a></li>
+                        <li><a href="">CALENDAR</a></li>
+                        <li><a href="">CONTACT</a></li>
+                        <li><a href="">OTHER</a></li>
+                        <li><a href="">ALL DEMOS</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
-        <div class="banner" style="background-image: url(#)"></div>
+        <div class="banner">
+            <div class="mask"></div>
+        </div>
 
         <main>
-            <div class="card">
-                <div class="picture">
-                    <img src="" alt="头像">
-                </div>
-                <div class="text">
-                    <div class="profile">
-                        <span class="welcome">Yep!</span>
+            <div class="userCard">
+                <div class="pictureAndText clearfix">
+                    <div class="picture">
+                        <img src="./img/avatar.jpg" alt="头像">
+                    </div>
+                    <div class="text">
+                        <span class="welcome">
+                                Yep!
+                                <span class="triangle"></span>
+                        </span>
                         <h1>DoneGary</h1>
                         <p>前 端 小 新 新</p>
                         <hr>
@@ -55,16 +72,37 @@
                             <dt>手 机</dt>
                             <dd>18519795652</dd>
                         </dl>
+
+
                     </div>
-                    <footer class="media">
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
-                    </footer>
                 </div>
+                <footer class="media">
+                    <a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-github"></use>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-twitter"></use>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-CN_jianshu"></use>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-weibo"></use>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-jirenguzaoqi"></use>
+                        </svg>
+                    </a>
+                </footer>
             </div>
 
             <a class="button" href="">下载拷贝</a>
