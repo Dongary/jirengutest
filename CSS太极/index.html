@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS太极</title>
+</head>
+<style type="text/css">
+    body {
+        background-color: #abe;
+    }
+    
+    #taiji {
+        width: 0px;
+        height: 600px;
+        border-left: 300px solid black;
+        border-right: 300px solid white;
+        border-radius: 100%;
+        margin: 300px auto;
+    }
+    
+    #taiji::before {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 100px solid black;
+        border-radius: 100%;
+        background-color: white;
+        margin-left: -150px;
+    }
+    
+    #taiji::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 100px solid white;
+        border-radius: 100%;
+        background-color: black;
+        margin-left: -150px;
+    }
+</style>
+
+<body>
+    <div id="taiji">
+
+    </div>
+</body>
+
+</html>
