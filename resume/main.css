@@ -20,6 +20,20 @@ a {
     text-decoration: none;
 }
 
+ol,
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
 .topNavBar {
     width: 100%;
     padding: 20px 0px 20px 0px;
@@ -102,11 +116,15 @@ a {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+main {
+    margin-top: -360px;
+}
+
 .userCard {
-    border: 1px solid red;
     max-width: 940px;
     background-color: #FFFFFF;
     margin: 0 auto;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .userCard .welcome {
@@ -191,3 +209,154 @@ a {
     fill: white;
     vertical-align: top;
 }
+
+main>.download-button {
+    text-align: center;
+}
+
+main>.download-button>.download {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    background: #EFEFEF;
+    padding: 20px 60px;
+    border: 1px solid #CDCFD1;
+    border-radius: 3px;
+    margin: 40px 0px;
+    transition: box-shadow 0.4s;
+}
+
+main>.download-button>.download:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+main>.self-introduction {
+    font-size: 24px;
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 2.0;
+}
+
+.skill-module,
+.portfolio-module {
+    max-width: 940px;
+    margin: 40px auto;
+}
+
+.skill-module>.skill-title,
+.portfolio-module>.portfolio-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.skill-module>.skill-card {
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    padding: 40px 40px 0px 40px;
+}
+
+.process-bar>li {
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.process-bar>li:nth-child(even) {
+    float: right;
+}
+
+.process-bar>li>h3 {
+    font-size: 14px;
+    line-height: 1.1;
+    padding-right: 40px;
+}
+
+.process-bar>li>.pink-bar {
+    background: #FAE1E1;
+    height: 5px;
+    border-radius: 2px;
+    margin: 4px 0 40px 0;
+}
+
+.process-bar>li>.pink-bar>.red-bar {
+    height: 100%;
+    background: #E8676B;
+    border-radius: 2px;
+}
+
+.portfolio-module {
+    text-align: center;
+}
+
+.portfolio-module>nav {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.portfolio-module>nav>ol {
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.portfolio-module>nav>ol>li {
+    float: left;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.portfolio-module>nav>ol>li:nth-child(1) {
+    margin-left: 0px;
+}
+
+.portfolio-module>nav>.portfolio-bar {
+    height: 5px;
+    background: white;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.portfolio-module>nav>.portfolio-bar>.bar-inner {
+    width: 10%;
+    height: 100%;
+    background: #E6686A;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.portfolio-module>nav>.portfolio-bar.state-1 .bar-inner {
+    margin-left: 0;
+    width: 45px;
+}
+
+.portfolio-module>nav>.portfolio-bar.state-2 .bar-inner {
+    margin-left: 45px;
+    width: 99px;
+}
+
+.portfolio-module>nav>.portfolio-bar.state-3 .bar-inner {
+    margin-left: 144px;
+    width: 65px;
+}
+
+.portfolio-module>.works {
+    position: relative;
+    height: 597px;
+}
+
+.portfolio-module>.works>.big,
+.portfolio-module>.works>.small {
+    position: absolute;
+}
+
+.portfolio-module>.works>.big {
+    top: 0;
+    left: 0;
+}
+
+.portfolio-module>.works>.small {}
