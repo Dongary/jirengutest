@@ -14,67 +14,123 @@
 
     <head></head>
     <main>
-        <div id="xx">
+        <div class="wrapper" id="main">
 
         </div>
     </main>
     <footer></footer>
     <script>
-        var keys = [
-            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-            ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-            ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-        ]
-        var hash = {
-            'q': 'qq.com',
-            'w': 'weibo.com',
-            'e': 'ele.com',
-            'r': 'renren.com',
-            't': 'tianya.com',
-            'y': 'youtube.com',
-            'u': 'uc.com',
-            'i': 'iqiyi.com',
-            'o': 'opera.com',
-            'p': undefined,
-        }
+        var hashA = init()
+        var keys = hashA['keys']
+        var hash = hashA['hash']
 
-        hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null');
-        if (hashInLocalStorage) {
-            hash = hashInLocalStorage
-        }
+        generateKeyboard(keys, hash)
+        listenToUser(hash)
 
-        var index = 0;
-        while (index < keys.length) {
-            divX = document.createElement('div')
-            xx.appendChild(divX)
-            row = keys[index]
-            var index2 = 0
-            while (index2 < row.length) {
-                kbdX = document.createElement('kbd')
-                kbdX.textContent = row[index2]
-                buttonX = document.createElement('button')
-                buttonX.textContent = "编辑"
-                buttonX.id = row[index2]
-                buttonX.onclick = function(event) {
-                    console.log(event);
-                    key = event['target']['id'];
-                    x = prompt('请输入你自己想要的网址');
-                    hash[key] = x;
-                    localStorage.setItem('zzz', JSON.stringify(hash));
-                    console.log(hash)
-                }
-                kbdX.appendChild(buttonX);
-                divX.appendChild(kbdX);
-                index2 = index2 + 1;
+        function init() {
+            var keys = [
+                ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+                ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+                ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+            ]
+            var hash = {
+                'q': 'qq.com',
+                'w': 'weibo.com',
+                'e': 'ele.com',
+                'r': 'renren.com',
+                't': 'tianya.com',
+                'y': 'youtube.com',
+                'u': 'uc.com',
+                'i': 'iqiyi.com',
+                'o': 'opera.com',
+                'p': undefined,
             }
-            index = index + 1;
+            var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null');
+            if (hashInLocalStorage) {
+                hash = hashInLocalStorage
+            }
+
+            return {
+                'keys': keys,
+                'hash': hash
+            }
         }
 
-        document.onkeypress = function(event) {
-            key = event['key'];
-            website = hash[key];
-            //location.href = 'http://' + website;
-            window.open('http://' + website, '_blank');
+        function generateKeyboard(keys, hash) {
+
+            for (var index = 0; index < keys.length; index = index + 1) {
+                var div = tag('div')
+                div.className = 'row'
+                main.appendChild(div)
+                var row = keys[index]
+                for (var index2 = 0; index2 < row['length']; index2 = index2 + 1) {
+                    var span = createSpan(row[index2])
+                    var button = createButton(row[index2])
+                    var img = createImage(hash[row[index2]])
+                    var kbd = tag('kbd')
+                    kbd.className = 'key'
+                    kbd.appendChild(span)
+                    kbd.appendChild(img)
+                    kbd.appendChild(button)
+                    div.appendChild(kbd)
+                }
+            }
+        }
+
+        function tag(tagName) {
+            return document.createElement(tagName)
+        }
+
+
+
+        function createSpan(textContent) {
+            var span = tag('span')
+            span.textContent = textContent
+            span.className = "text"
+            return span
+        }
+
+        function createButton(id) {
+
+            var button = tag('button')
+            button.textContent = '改变'
+            button.id = id
+            button.onclick = function(xzkjcnxlkcjlk) {
+                var button2 = xzkjcnxlkcjlk['target']
+                var img2 = button2.previousSibling
+                var key = button2['id']
+                var x = prompt('请输入自己想要的网址')
+                hash[key] = x
+                img2.src = 'http://' + x + '/favicon.ico'
+                img2.onerror = function(xxx) {
+                    xxx.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+                }
+                localStorage.setItem('zzz', JSON.stringify(hash))
+            }
+            return button
+        }
+
+        function createImage(domain) {
+            var img = tag('img')
+            if (domain) {
+                img.src = 'http://' + domain + '/favicon.ico'
+            } else {
+                img.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            img.onerror = function(xxx) {
+                xxx.target.src = 'https://i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            return img
+        }
+
+
+
+        function listenToUser(hash) {
+            document.onkeypress = function(event) {
+                key = event['key'];
+                website = hash[key];
+                window.open('http://' + website, '_blank');
+            }
         }
     </script>
 </body>
