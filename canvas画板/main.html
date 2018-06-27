@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./main.css">
+    <title>CANVAS</title>
+</head>
+
+<body>
+    <canvas id="xxx" width="300" height="300"></canvas>
+    <div id="actions" class="actions">
+        <svg id="pen" class="icon active" aria-hidden="true">
+            <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg id="eraser" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-erase"></use>
+        </svg>
+        <svg id="clear" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-clear"></use>
+        </svg>
+        <svg id="save" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-save"></use>
+        </svg>
+    </div>
+    <ol id="colors" class="colors">
+        <li id="black" class="black active"></li>
+        <li id="green" class="green"></li>
+        <li id="orange" class="orange"></li>
+    </ol>
+    <ol id="penSize" class="penSize">
+        <li id="thin" class="thin active"></li>
+        <li id="thick" class="thick"></li>
+    </ol>
+</body>
+<script src="./main.js"></script>
+<script src="https://at.alicdn.com/t/font_724105_uk3zyn37ky.js"></script>
+
+</html>
