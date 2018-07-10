@@ -16,190 +16,307 @@
             fill: currentColor;
             overflow: hidden;
         }
+        
+        .site-loading {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #888;
+            z-index: 1;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .site-loading.active {
+            display: none;
+        }
+        
+        .loading {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        
+        .loading::before,
+        .loading::after {
+            content: '';
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            background: black;
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            animation: s 1.5s linear infinite;
+        }
+        
+        .loading::after {
+            animation-delay: 0.75s;
+        }
+        
+        @keyframes s {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+            }
+            100% {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+            }
+        }
     </style>
+
 </head>
 
 <body>
-
-    <body>
-
-        <div class="topNavBar">
-            <div class="topNavBar-inner clearfix">
-                <a class="logo" href="" alt="logo">
-                    <span class="rs">RS</span><span class="card">card</span>
-                </a>
-                <nav>
-                    <ul class="clearfix">
-                        <li><a href="">关于</a></li>
-                        <li><a href="">技能</a></li>
-                        <li><a href="">作品</a></li>
-                        <li><a href="https://dongary.github.io/">Blog</a></li>
-                        <li><a href="">日历</a></li>
-                        <li><a href="">联系方式</a></li>
-                        <li><a href="">其他</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <div class="banner">
-            <div class="mask"></div>
-        </div>
-
-        <main>
-            <div class="userCard">
-                <div class="pictureAndText clearfix">
-                    <div class="picture">
-                        <img src="./img/avatar.jpg" style="width: 299px; height: 347px;" alt="头像">
-                    </div>
-                    <div class="text">
-                        <span class="welcome">
-                                Yep!
-                                <span class="triangle"></span>
-                        </span>
-                        <h1>DoneGary</h1>
-                        <p>前 端 小 新 新</p>
-                        <hr>
-                        <dl>
-                            <dt>年 龄</dt>
-                            <dd>21</dd>
-                            <dt>城 市</dt>
-                            <dd>郑 州</dd>
-                            <dt>邮 箱</dt>
-                            <dd>991537024@qq.com</dd>
-                            <dt>手 机</dt>
-                            <dd>18519795652</dd>
-                            <dt>微 信</dt>
-                            <dd>18519795652</dd>
-                            <dt>博 客</dt>
-                            <dd>https://dongary.github.io/</dd>
-                        </dl>
-
-
-                    </div>
-                </div>
-                <footer class="media">
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-github"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-mayun"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-weixin"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-icon"></use>
-                        </svg>
-                    </a>
-                    <a href="#">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-weibo"></use>
-                        </svg>
-                    </a>
-                </footer>
-            </div>
-
-            <p class="download-button">
-                <a class="download" href="./wzx.pdf" target="_blank" download>下 载 简 历</a>
-            </p>
-
-
-            <p class="self-introduction">
-                我叫吴自行，是来自河南郑州的前端开发者学习前端知识有一年有余
-                <br> 经常浪迹于简书，掘金，知乎，以及阮一峰，张鑫旭的博客
-                <br> 精通前端基础语言，多种框架和微信小程序
-            </p>
-
-        </main>
-        <section class="skill-module">
-            <p class="skill-title">技 能</p>
-            <div class="skill-card">
-                <ol class="process-bar clearfix">
+    <div class="site-loading" id="siteLoading">
+        <div class="loading"></div>
+    </div>
+    <div class="topNavBar" id="topNavBar">
+        <div class="topNavBar-inner clearfix">
+            <a class="logo" href="" alt="logo">
+                <span class="rs">RS</span>
+                <span class="card">card</span>
+            </a>
+            <nav class="menu">
+                <ul class="clearfix">
                     <li>
-                        <h3>H5&amp;CSS3</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 50%;"></div>
-                        </div>
+                        <a class="listone" href="#siteAbout">关于</a>
                     </li>
                     <li>
-                        <h3>Javascript</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 60%;"></div>
-                        </div>
+                        <a class="listone" href="#siteSkills">技能</a>
                     </li>
                     <li>
-                        <h3>jQuery</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 60%;"></div>
-                        </div>
+                        <a class="listone" href="#siteWorks">作品</a>
+                        <ul class="submenu">
+                            <li><a class="listtwo" href="">作品1</a></li>
+                            <li><a class="listtwo" href="">作品2</a></li>
+                            <li><a class="listtwo" href="">作品3</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <h3>Vue</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 40%;"></div>
-                        </div>
+                        <a class="listone" href="https://dongary.github.io/">Blog</a>
                     </li>
                     <li>
-                        <h3>Node.js</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 40%;"></div>
-                        </div>
+                        <a class="listone" href="">日历</a>
                     </li>
                     <li>
-                        <h3>Photoshop</h3>
-                        <div class="pink-bar">
-                            <div class="red-bar" style="width: 50%;"></div>
-                        </div>
+                        <a class="listone" href="">联系方式</a>
                     </li>
-                </ol>
-            </div>
-        </section>
-        <section class="portfolio-module">
-            <p class="portfolio-title">作品集</p>
-            <nav>
-                <ol class="clearfix">
-                    <li id="ones">所 有</li>
-                    <li id="twos">框 架</li>
-                    <li id="threes">原 生 JS</li>
-                </ol>
-                <div id="bar" class="portfolio-bar state-1">
-                    <div class="bar-inner"></div>
-                </div>
+                    <li>
+                        <a class="listone" href="">其他</a>
+                    </li>
+                </ul>
             </nav>
-            <script>
-                ones.onclick = function() {
-                    bar.className = 'portfolio-bar state-1'
-                }
-                twos.onclick = function() {
-                    bar.className = 'portfolio-bar state-2'
-                }
-                threes.onclick = function() {
-                    bar.className = 'portfolio-bar state-3'
-                }
-            </script>
-            <div class="works">
-                <div class="big" style="top: 0; left: 0px;">
-                    <img src="./img/f1.jpg" style="width: 606px; height: 597px;" alt="作品1">
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
+
+    <main>
+        <div class="userCard" id="siteAbout">
+            <div class="pictureAndText clearfix">
+                <div class="picture">
+                    <img src="./img/avatar.jpg" style="width: 299px; height: 347px;" alt="头像">
                 </div>
-                <div class="small" style="top: 0; left: 645px;">
-                    <img src="./img/f2.jpg" style="width: 293px; height: 285px;" alt="作品2">
-                </div>
-                <div class="small" style="top: 312px; left: 645px;">
-                    <img src="./img/f3.jpg" style="width: 293px; height: 285px;" alt="作品3">
+                <div class="text">
+                    <span class="welcome">
+                        Yep!
+                        <span class="triangle"></span>
+                    </span>
+                    <h1>DoneGary</h1>
+                    <p>前 端 小 新 新</p>
+                    <hr>
+                    <dl>
+                        <dt>年 龄</dt>
+                        <dd>21</dd>
+                        <dt>城 市</dt>
+                        <dd>郑 州</dd>
+                        <dt>邮 箱</dt>
+                        <dd>991537024@qq.com</dd>
+                        <dt>手 机</dt>
+                        <dd>18519795652</dd>
+                        <dt>微 信</dt>
+                        <dd>18519795652</dd>
+                        <dt>博 客</dt>
+                        <dd>https://dongary.github.io/</dd>
+                    </dl>
+
+
                 </div>
             </div>
-        </section>
+            <footer class="media">
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-mayun"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixin"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-icon"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
+            </footer>
+        </div>
 
-    </body>
+        <p class="download-button">
+            <a class="download" href="./wzx.pdf" target="_blank" download>下 载 简 历</a>
+        </p>
 
+
+        <p class="self-introduction">
+            我叫吴自行，是来自河南郑州的前端开发者学习前端知识有一年有余
+            <br> 经常浪迹于简书，掘金，知乎，以及阮一峰，张鑫旭的博客
+            <br> 精通前端基础语言，多种框架和微信小程序
+        </p>
+
+    </main>
+    <section class="skill-module" id="siteSkills">
+        <p class="skill-title">技 能</p>
+        <div class="skill-card">
+            <ol class="process-bar clearfix">
+                <li>
+                    <h3>H5&amp;CSS3</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 50%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Javascript</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 60%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>jQuery</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 60%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Vue</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 40%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Node.js</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 40%;"></div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Photoshop</h3>
+                    <div class="pink-bar">
+                        <div class="red-bar" style="width: 50%;"></div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+    <section class="portfolio-module" id="siteWorks">
+        <p class="portfolio-title">作品集</p>
+        <nav>
+            <ol class="clearfix">
+                <li id="ones">所 有</li>
+                <li id="twos">框 架</li>
+                <li id="threes">原 生 JS</li>
+            </ol>
+            <div id="bar" class="portfolio-bar state-1">
+                <div class="bar-inner"></div>
+            </div>
+        </nav>
+        <div class="works">
+            <div class="big" id="bigs">
+                <img src="./img/f1.jpg" style="width: 606px; height: 597px;" alt="作品1">
+            </div>
+            <div class="small" id="small">
+                <img src="./img/f2.jpg" style="width: 293px; height: 285px;" alt="作品2">
+            </div>
+            <div class="smalls" id="smalls">
+                <img src="./img/f3.jpg" style="width: 293px; height: 285px;" alt="作品3">
+            </div>
+        </div>
+    </section>
+    <script>
+        setTimeout(function() {
+            siteLoading.classList.add('active')
+        }, 1000)
+
+        window.onscroll = function() {
+            var a = window.scrollY;
+            if (a > 0) {
+                topNavBar.classList.add('fixedbar')
+            } else {
+                topNavBar.classList.remove('fixedbar')
+            }
+        }
+        let liTags = document.querySelectorAll('nav.menu> ul > li')
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function(x) {
+                x.currentTarget.classList.add('active')
+            }
+            liTags[i].onmouseleave = function(x) {
+                x.currentTarget.classList.remove('active')
+            }
+        }
+
+        let aTags = document.querySelectorAll('nav.menu> ul > li > a')
+        for (let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function(x) {
+                x.preventDefault()
+                let a = x.currentTarget
+                let href = a.getAttribute('href')
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+                window.scrollTo(0, top - 80)
+            }
+        }
+
+        ones.onclick = function() {
+            bar.className = 'portfolio-bar state-1';
+            bigs.style = 'display: block;';
+            small.style = 'display: block;top: 0;left: 645px;';
+            smalls.style = 'display: block;top: 312px;left: 645px;';
+        }
+        twos.onclick = function() {
+            bar.className = 'portfolio-bar state-2';
+            bigs.style = 'display: block;';
+            small.style = 'display: none;';
+            smalls.style = 'display: none;';
+        }
+        threes.onclick = function() {
+            bar.className = 'portfolio-bar state-3';
+            bigs.style = 'display: none;';
+            small.style = 'top: 0;left: 0;';
+            smalls.style = 'top: 312px;left: 0;';
+        }
+    </script>
 </body>
 
 </html>
