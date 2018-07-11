@@ -154,7 +154,7 @@ h6 {
     width: 100%;
     background: #e06567;
     height: 3px;
-    animation: bottomborder 1s linear infinite;
+    animation: bottomborder 1.5s ease 1;
 }
 
 @keyframes bottomborder {
