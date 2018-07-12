@@ -117,16 +117,15 @@ h6 {
     display: none;
     flex-direction: column;
     position: absolute;
-    left: -18px;
     top: 28px;
-    padding: 5px 0;
+    padding: 5px 0px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    right: 0;
 }
 
 .topNavBar nav ul li .submenu li {
     margin: 0px 0px;
     padding: 0 17px;
-    transition: all 0.5s;
 }
 
 .topNavBar nav ul li .submenu li .listtwo {
@@ -135,17 +134,29 @@ h6 {
 
 .topNavBar nav ul li .submenu li:hover {
     background: #EFEFEF;
+    color: red;
 }
 
-.topNavBar nav ul li:hover .submenu {
+.topNavBar nav ul>li.active>.submenu {
     display: flex;
+    animation: Submenu 0.7s ease 1;
+}
+
+@keyframes Submenu {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .topNavBar nav ul li .submenu>li {
     white-space: nowrap;
 }
 
-.topNavBar .clearfix .listone:hover::after {
+.topNavBar .clearfix>li.active>a::after,
+.topNavBar .clearfix>li.highlight>a::after {
     content: '';
     display: block;
     position: absolute;
@@ -154,7 +165,7 @@ h6 {
     width: 100%;
     background: #e06567;
     height: 3px;
-    animation: bottomborder 1.5s ease 1;
+    animation: bottomborder 0.8s ease 1;
 }
 
 @keyframes bottomborder {
@@ -187,6 +198,28 @@ main {
     background-color: #FFFFFF;
     margin: 0 auto;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+[data-x].animate {
+    animation: popup 1s 1;
+}
+
+@keyframes popup {
+    0% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+[data-x].offset {
+    transform: translateY(30px);
+}
+
+[data-x] {
+    transform: translateY(0);
+    transition: all 1s;
 }
 
 .userCard .welcome {
@@ -342,12 +375,19 @@ main>.self-introduction {
     height: 5px;
     border-radius: 2px;
     margin: 4px 0 40px 0;
+    overflow: hidden;
 }
 
 .process-bar>li>.pink-bar>.red-bar {
     height: 100%;
     background: #E8676B;
     border-radius: 2px;
+    transform: translateX(0);
+    transition: all 1s;
+}
+
+.offset .process-bar>li>.pink-bar>.red-bar {
+    transform: translateX(-100%);
 }
 
 .portfolio-module {
