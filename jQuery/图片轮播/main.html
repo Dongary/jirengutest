@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        .images {
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.5s;
+        }
+        
+        .images>img {
+            vertical-align: top;
+        }
+        
+        .window {
+            width: 500px;
+            overflow: hidden;
+        }
+        
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="images" id="images">
+            <img src="img/jq1.jpg" alt="" width="500px" height="400px">
+            <img src="img/jq2.jpg" alt="" width="500px" height="400px">
+            <img src="img/jq3.jpg" alt="" width="500px" height="400px">
+        </div>
+        <div id="buttons">
+            <span>第一张</span>
+            <span>第二张</span>
+            <span>第三张</span>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
