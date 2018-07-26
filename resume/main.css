@@ -34,6 +34,70 @@ h6 {
     font-weight: normal;
 }
 
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.site-loading {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #888;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-loading.active {
+    display: none;
+}
+
+.loading {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.loading::before,
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: black;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    animation: s 1.5s linear infinite;
+}
+
+.loading::after {
+    animation-delay: 0.75s;
+}
+
+@keyframes s {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+
 .topNavBar {
     width: 100%;
     padding: 20px 0px 20px 0px;
@@ -334,13 +398,15 @@ main>.self-introduction {
 }
 
 .skill-module,
-.portfolio-module {
+.portfolio-module,
+.messageboard {
     max-width: 940px;
     margin: 40px auto;
 }
 
 .skill-module>.skill-title,
-.portfolio-module>.portfolio-title {
+.portfolio-module>.portfolio-title,
+.messageboard>.messageboard-title {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
@@ -392,58 +458,7 @@ main>.self-introduction {
 
 .portfolio-module {
     text-align: center;
-}
-
-.portfolio-module>nav {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.portfolio-module>nav>ol {
-    margin: 0 auto;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.portfolio-module>nav>ol>li {
-    float: left;
-    margin-left: 40px;
-    cursor: pointer;
-}
-
-.portfolio-module>nav>ol>li:nth-child(1) {
-    margin-left: 0px;
-}
-
-.portfolio-module>nav>.portfolio-bar {
-    height: 5px;
-    background: white;
-    border-radius: 2px;
-    margin-top: 10px;
-    margin-bottom: 40px;
-}
-
-.portfolio-module>nav>.portfolio-bar>.bar-inner {
-    width: 10%;
-    height: 100%;
-    background: #E6686A;
-    border-radius: 2px;
-    transition: all 0.3s;
-}
-
-.portfolio-module>nav>.portfolio-bar.state-1 .bar-inner {
-    margin-left: 0;
-    width: 45px;
-}
-
-.portfolio-module>nav>.portfolio-bar.state-2 .bar-inner {
-    margin-left: 45px;
-    width: 99px;
-}
-
-.portfolio-module>nav>.portfolio-bar.state-3 .bar-inner {
-    margin-left: 144px;
-    width: 65px;
+    max-width: 720px;
 }
 
 .portfolio-module>.works {
@@ -451,24 +466,43 @@ main>.self-introduction {
     height: 597px;
 }
 
-.portfolio-module>.works>.big,
-.portfolio-module>.works>.small,
-.portfolio-module>.works>.smalls {
-    position: absolute;
-    transition: all 0.3s;
+.portfolio-module .swiper-container {
+    width: 668px;
+    height: 501px;
 }
 
-.portfolio-module>.works>.big {
-    top: 0;
-    left: 0;
+.portfolio-module .swiper-button-prev {
+    background-color: white;
+    width: 64px;
+    height: 64px;
+    top: 326px;
+    right: 100%;
+    left: auto;
+    border-radius: 50%;
 }
 
-.portfolio-module>.works>.small {
-    top: 0;
-    left: 645px;
+.portfolio-module .swiper-button-next {
+    background-color: white;
+    width: 64px;
+    height: 64px;
+    top: 326px;
+    right: auto;
+    left: 100%;
+    border-radius: 50%;
 }
 
-.portfolio-module>.works>.smalls {
-    top: 312px;
-    left: 645px;
+section.messageboard>ol {
+    max-width: 700px;
+    margin: 0 auto;
+    border-top: 1px solid #ddd;
+}
+
+section.messageboard>ol>li {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+section.messageboard>#postMessageForm {
+    width: 670px;
+    margin: 50px auto;
 }

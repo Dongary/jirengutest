@@ -6,74 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My resume</title>
-    <link rel="stylesheet" href="main.css">
     <script src="//at.alicdn.com/t/font_700591_gaoogms7yjgfzuxr.js"></script>
-    <style type="text/css">
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
-        
-        .site-loading {
-            display: flex;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #888;
-            z-index: 1;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .site-loading.active {
-            display: none;
-        }
-        
-        .loading {
-            width: 200px;
-            height: 200px;
-            position: relative;
-        }
-        
-        .loading::before,
-        .loading::after {
-            content: '';
-            position: absolute;
-            width: 0px;
-            height: 0px;
-            background: black;
-            border-radius: 50%;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            margin: auto;
-            animation: s 1.5s linear infinite;
-        }
-        
-        .loading::after {
-            animation-delay: 0.75s;
-        }
-        
-        @keyframes s {
-            0% {
-                width: 0px;
-                height: 0px;
-                opacity: 1;
-            }
-            100% {
-                width: 100px;
-                height: 100px;
-                opacity: 0;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.1.0/css/swiper.min.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
@@ -241,146 +176,46 @@
     </section>
     <section class="portfolio-module" id="siteWorks" data-x>
         <p class="portfolio-title">作品集</p>
-        <nav>
-            <ol class="clearfix">
-                <li id="ones">所 有</li>
-                <li id="twos">框 架</li>
-                <li id="threes">原 生 JS</li>
-            </ol>
-            <div id="bar" class="portfolio-bar state-1">
-                <div class="bar-inner"></div>
+
+        <div id="mySlides">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img src="./img/keybord.jpg" class="swiper-slide">
+                    <img src="./img/canvass.jpg" class="swiper-slide">
+                    <img src="./img/canvass.jpg" class="swiper-slide">
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
             </div>
-        </nav>
-        <div class="works">
-            <div class="big" id="bigs">
-                <img src="./img/小程序.jpg" style="width: 606px; height: 597px;" alt="作品1">
-            </div>
-            <div class="small" id="small">
-                <img src="./img/keybord.jpg" style="width: 293px; height: 285px;" alt="作品2">
-            </div>
-            <div class="smalls" id="smalls">
-                <img src="./img/canvans.jpg" style="width: 293px; height: 285px;" alt="作品3">
-            </div>
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
+
     </section>
+
+    <section class="messageboard">
+        <h2 class="messageboard-title">留言板</h2>
+        <ol id="messageList"></ol>
+        <form id="postMessageForm">
+            <label for="">昵称</label>
+            <input type="text" name="name">
+            <label for="">内容</label>
+            <input type="text" name="content">
+            <input type="submit" name="" id="" value="提交">
+        </form>
+    </section>
+    <!-- 外部依赖 -->
     <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
-    <script>
-        setTimeout(function() {
-            siteLoading.classList.add('active')
-        }, 1000)
-
-        let specialTags = document.querySelectorAll('[data-x]')
-        for (let i = 0; i < specialTags.length; i++) {
-            specialTags[i].classList.add('offset')
-        }
-        setTimeout(function() {
-            yyy()
-        }, 888)
-        window.onscroll = function() {
-            var a = window.scrollY;
-            if (a > 20) {
-                topNavBar.classList.add('fixedbar');
-            } else {
-                topNavBar.classList.remove('fixedbar');
-            }
-            yyy()
-            if (a < 20) {
-                listone.classList.remove('highlight');
-            }
-        }
-
-        function yyy() {
-            let specialTags = document.querySelectorAll('[data-x]')
-            let minIndex = 0
-            for (let i = 1; i < specialTags.length; i++) {
-                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
-                    minIndex = i
-                }
-            }
-            let id = specialTags[minIndex].id
-            let href = document.querySelector('a[href="#' + id + '"]')
-            let li = href.parentNode
-            let broandme = li.parentNode.children
-            for (let i = 0; i < broandme.length; i++) {
-                broandme[i].classList.remove('highlight')
-            }
-            for (let i = 0; i < specialTags.length; i++) {
-                specialTags[i].classList.add('offset')
-                specialTags[i].classList.remove('animate')
-            }
-            specialTags[minIndex].classList.remove('offset')
-            specialTags[minIndex].classList.add('animate')
-            li.classList.add('highlight')
-        }
-
-        let liTags = document.querySelectorAll('nav.menu> ul > li')
-        for (let i = 0; i < liTags.length; i++) {
-            liTags[i].onmouseenter = function(x) {
-                x.currentTarget.classList.add('active')
-            }
-            liTags[i].onmouseleave = function(x) {
-                x.currentTarget.classList.remove('active')
-            }
-        }
-
-        let aTags = document.querySelectorAll('nav.menu> ul > li > a')
-
-        function animate(time) {
-            requestAnimationFrame(animate);
-            TWEEN.update(time);
-        }
-        requestAnimationFrame(animate);
-
-
-        for (let i = 0; i < aTags.length; i++) {
-            aTags[i].onclick = function(x) {
-                x.preventDefault()
-                let a = x.currentTarget
-                let href = a.getAttribute('href')
-                let element = document.querySelector(href)
-                let top = element.offsetTop
-
-                let currentTop = window.scrollY
-                let targetTop = top - 80
-                let s = targetTop - currentTop
-                var coords = {
-                    y: currentTop
-                };
-                var t = Math.abs((s / 100) * 300)
-                if (t > 500) {
-                    t = 500
-                }
-                var tween = new TWEEN.Tween(coords)
-                    .to({
-                        y: targetTop
-                    }, t)
-                    .easing(TWEEN.Easing.Quadratic.In)
-                    .onUpdate(function() {
-                        window.scrollTo(0, coords.y)
-                    })
-                    .start();
-            }
-        }
-
-        ones.onclick = function() {
-            bar.className = 'portfolio-bar state-1';
-            bigs.style = 'display: block;';
-            small.style = 'display: block;top: 0;left: 645px;';
-            smalls.style = 'display: block;top: 312px;left: 645px;';
-        }
-        twos.onclick = function() {
-            bar.className = 'portfolio-bar state-2';
-            bigs.style = 'display: block;';
-            small.style = 'display: none;';
-            smalls.style = 'display: none;';
-        }
-        threes.onclick = function() {
-            bar.className = 'portfolio-bar state-3';
-            bigs.style = 'display: none;';
-            small.style = 'top: 0;left: 0;';
-            smalls.style = 'top: 312px;left: 0;';
-        }
-    </script>
+    <script src="https://cdn.bootcss.com/Swiper/4.1.0/js/swiper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.9.0/dist/av-min.js"></script>
+    <!-- 封装API -->
+    <script src="./js/swiperInit.js"></script>
+    <script src="./js/auto-slide-up.js"></script>
+    <script src="./js/sticky-topbar.js"></script>
+    <script src="./js/smoothly-navigation.js"></script>
+    <script src="./js/page-init.js"></script>
+    <script src="./js/messageBoard-init.js"></script>
 </body>
 
 </html>
