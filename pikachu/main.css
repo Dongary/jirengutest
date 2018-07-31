@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::after {
+    box-sizing: border-box;
+}
+
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FEE433;
+}
+
+.wrapper {
+    width: 100%;
+    height: 165px;
+    position: relative;
+}
+
+.nose {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 11px;
+    border-color: black transparent transparent transparent;
+    border-radius: 11px;
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    margin-left: -11px;
+}
+
+.eye {
+    width: 49px;
+    height: 49px;
+    background: #2e2e2e;
+    position: absolute;
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+.eye::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: white;
+    position: absolute;
+    top: -2px;
+    left: 5px;
+    border-radius: 50%;
+    border: 3px solid black
+}
+
+.eye.left {
+    right: 50%;
+    margin-right: 90px;
+}
+
+.eye.right {
+    left: 50%;
+    margin-left: 90px;
+}
+
+.face {
+    width: 68px;
+    height: 68px;
+    background: #fc0d1c;
+    border: 3px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 85px;
+}
+
+.face.left {
+    right: 50%;
+    margin-right: 116px;
+}
+
+.face.right {
+    left: 50%;
+    margin-left: 116px;
+}
+
+.upperLip {
+    height: 20px;
+    width: 80px;
+    border: 3px solid black;
+    position: absolute;
+    top: 49px;
+    background: #FEE433;
+}
+
+.upperLip.left {
+    right: 50%;
+    border-bottom-left-radius: 40px 20px;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-20deg);
+}
+
+.upperLip.right {
+    left: 50%;
+    border-bottom-right-radius: 40px 20px;
+    border-top: none;
+    border-left: none;
+    transform: rotate(20deg);
+}
+
+.lowerLip-wrapper {
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    z-index: -1;
+    height: 110px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.lowerLip {
+    height: 3500px;
+    width: 300px;
+    background: #990513;
+    border-radius: 200px/2000px;
+    border: 3px solid black;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.lowerLip::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    width: 100px;
+    height: 100px;
+    background: #FC4A62;
+    left: 50%;
+    margin-left: -50px;
+    border-radius: 50px;
+}
