@@ -1,28 +1,7 @@
 ! function() {
 
-    var model = {
-        // 获取数据
-        init: function() {
-            var APP_ID = '4TtgQrSfO0ROg0LlCGk6BD14-gzGzoHsz'
-            var APP_KEY = '1YO3hjk1w4x6ry0l2vsmaRwc'
-            AV.init({ appId: APP_ID, appKey: APP_KEY })
-        },
-        fetch: function() {
-            var query = new AV.Query('MessageBoard');
-            return query.find() // Promise 对象
-        },
-        // 创建数据
-        save: function(name, content) {
-            var Message = AV.Object.extend('MessageBoard');
-            var message = new Message();
-            return message.save({ // Promise 对象  
-                'name': name,
-                'content': content
-            })
-        }
-    }
-
-    var view = document.querySelector('section.messageboard')
+    var model = Model({ resourceName: 'MessageBoard' })
+    var view = View('section.messageboard')
 
     var controller = {
         view: null,
@@ -53,11 +32,15 @@
             let myForm = this.form
             let content = myForm.querySelector('input[name=content]').value
             let name = myForm.querySelector('input[name=name]').value
-            this.model.save(name, content).then(function(object) {
+            this.model.save({ // Promise 对象  
+                'name': name,
+                'content': content
+            }).then(function(object) {
                 let li = document.createElement('li')
                 li.innerText = `${object.attributes.name}: ${object.attributes.content}`
                 let messageList = document.querySelector('#messageList')
-                messageList.appendChild(li)
+                    //messageList.appendChild(li)
+                messageList.insertBefore(li, messageList.childNodes[0])
                 myForm.querySelector('input[name=name]').value = ''
                 myForm.querySelector('input[name=content]').value = ''
             })

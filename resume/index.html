@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My resume</title>
-    <script src="//at.alicdn.com/t/font_700591_gaoogms7yjgfzuxr.js"></script>
+    <script src="//at.alicdn.com/t/font_700591_it2kzzsxe9.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.1.0/css/swiper.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
@@ -30,25 +30,23 @@
                         <a class="listone" href="#siteSkills">技能</a>
                     </li>
                     <li>
-                        <a class="listone" href="#siteWorks">作品</a>
-                        <ul class="submenu">
+                        <a class="listone" href="#siteWorks">作品集</a>
+                        <!--
+                         <ul class="submenu">
                             <li><a class="listtwo" href="">作品1</a></li>
                             <li><a class="listtwo" href="">作品2</a></li>
                             <li><a class="listtwo" href="">作品3</a></li>
                         </ul>
+                        -->
                     </li>
+                    <li>
+                        <a class="listone" href="#messageBoard">留言板</a>
+                    </li>
+                    <!--
                     <li>
                         <a class="listone" href="https://dongary.github.io/">Blog</a>
                     </li>
-                    <li>
-                        <a class="listone" href="">日历</a>
-                    </li>
-                    <li>
-                        <a class="listone" href="">联系方式</a>
-                    </li>
-                    <li>
-                        <a class="listone" href="">其他</a>
-                    </li>
+                    -->
                 </ul>
             </nav>
         </div>
@@ -69,49 +67,35 @@
                         Yep!
                         <span class="triangle"></span>
                     </span>
-                    <h1>DoneGary</h1>
-                    <p>前 端 小 新 新</p>
+                    <h1>吴自行</h1>
+                    <p>前 端 萌 新</p>
                     <hr>
                     <dl>
                         <dt>年 龄</dt>
-                        <dd>21</dd>
+                        <dd>23</dd>
                         <dt>城 市</dt>
-                        <dd>郑 州</dd>
+                        <dd>平 顶 山</dd>
                         <dt>邮 箱</dt>
-                        <dd>991537024@qq.com</dd>
+                        <dd>donegary@foxmail.com</dd>
                         <dt>手 机</dt>
                         <dd>18519795652</dd>
                         <dt>微 信</dt>
                         <dd>18519795652</dd>
-                        <dt>博 客</dt>
-                        <dd>https://dongary.github.io/</dd>
                     </dl>
-
-
                 </div>
             </div>
             <footer class="media">
-                <a href="#">
+                <a href="https://github.com/Dongary">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-github"></use>
                     </svg>
                 </a>
-                <a href="#">
+                <a href="https://dongary.github.io/">
                     <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-mayun"></use>
+                        <use xlink:href="#icon-blog"></use>
                     </svg>
                 </a>
-                <a href="#">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-weixin"></use>
-                    </svg>
-                </a>
-                <a href="#">
-                    <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-icon"></use>
-                    </svg>
-                </a>
-                <a href="#">
+                <a href="https://weibo.com/u/5288809821?refer_flag=1001030102_&is_all=1">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-weibo"></use>
                     </svg>
@@ -125,9 +109,9 @@
 
 
         <p class="self-introduction">
-            我叫吴自行，是来自河南郑州的前端开发者学习前端知识有一年有余
-            <br> 经常浪迹于简书，掘金，知乎，以及阮一峰，张鑫旭的博客
-            <br> 精通前端基础语言，多种框架和微信小程序
+            我叫吴自行，是来自河南平顶山的前端开发者，学习前端知识有一年有余
+            <br> 经常游走于简书，掘金，知乎，以及阮一峰，张鑫旭的博客
+            <br> 熟悉前端语言，框架以及微信小程序
         </p>
 
     </main>
@@ -166,9 +150,9 @@
                     </div>
                 </li>
                 <li>
-                    <h3>Photoshop</h3>
+                    <h3>小程序</h3>
                     <div class="pink-bar">
-                        <div class="red-bar" style="width: 50%;"></div>
+                        <div class="red-bar" style="width: 65%;"></div>
                     </div>
                 </li>
             </ol>
@@ -194,9 +178,9 @@
 
     </section>
 
-    <section class="messageboard">
+    <section class="messageboard" id="messageBoard" data-x>
         <h2 class="messageboard-title">留言板</h2>
-        <ol id="messageList"></ol>
+
         <form id="postMessageForm">
             <label for="">昵称</label>
             <input type="text" name="name">
@@ -204,12 +188,16 @@
             <input type="text" name="content">
             <input type="submit" name="" id="" value="提交">
         </form>
+        <ol id="messageList"></ol>
     </section>
     <!-- 外部依赖 -->
     <script src="https://cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
     <script src="https://cdn.bootcss.com/Swiper/4.1.0/js/swiper.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.9.0/dist/av-min.js"></script>
     <!-- 封装API -->
+    <script src="./js/View.js"></script>
+    <script src="./js/Model.js"></script>
+    <script src="./js/Controller.js"></script>
     <script src="./js/swiperInit.js"></script>
     <script src="./js/auto-slide-up.js"></script>
     <script src="./js/sticky-topbar.js"></script>
