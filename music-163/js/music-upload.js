@@ -74,7 +74,7 @@
                         var singer = songArray[1].split('.')
                         singer = singer[0]
                         var sourceLink = '//' + domain + '/' + encodeURIComponent(response.key);
-                        window.eventHub.emit('upload', {
+                        window.eventHub.emit('new', {
                             url: sourceLink,
                             name: name,
                             singer: singer

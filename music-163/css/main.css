@@ -75,7 +75,7 @@ input {
 .songList>li {
     border-bottom: 1px solid #ddd;
     padding: 10px;
-    margin: 0 10px;
+    margin-left: 10px;
 }
 
 .songList>li.active {
