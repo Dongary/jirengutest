@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::after {
+    box-sizing: border-box;
+}
+
+*::before {
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px 12px;
+    margin: 12px 0px;
+    border-left: 2px solid #A94145;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.headHint {
+    background: #242424;
+}
+
+.headHint>.logoimg {
+    display: inline-block;
+    padding: 5px 3px;
+}
+
+.headHint>a {
+    display: block;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 13px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    float: right;
+    margin-top: 9px;
+    margin-right: 10px;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #CFCFCE;
+}
+
+.navBar>div {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    margin: 0px 30px;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.navBar>div.active {
+    color: #A94145;
+    border-bottom: 2px solid #A94145;
+}
+
+.tabContent>.pageOne,
+.tabContent>.pageTwo,
+.tabContent>.pageThree {
+    display: none;
+}
+
+.tabContent>.pageOne.active,
+.tabContent>.pageTwo.active,
+.tabContent>.pageThree.active {
+    display: block;
+}
+
+.tabContent>.pageOne>.recomendSongList>.songLists,
+.tabContent>.pageTwo>.recomendSongList>.songLists {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.tabContent>.pageOne>.recomendSongList>.songLists>div,
+.tabContent>.pageTwo>.recomendSongList>.songLists>div {
+    box-sizing: content-box;
+    width: 33%;
+    margin-right: 0px;
+}
+
+.tabContent>.pageOne>.recomendSongList>.songLists>.listTwo,
+.tabContent>.pageTwo>.recomendSongList>.songLists>.listTwo {
+    margin: 0px 2px;
+}
+
+.tabContent>.pageOne>.recomendSongList>.songLists>div>img,
+.tabContent>.pageTwo>.recomendSongList>.songLists>div>img {
+    width: 100%;
+}
+
+.tabContent>.pageOne>.recomendSongList>.songLists>div>span,
+.tabContent>.pageTwo>.recomendSongList>.songLists>div>span {
+    display: block;
+}
+
+.tabContent>.pageOne>.newSongList,
+.tabContent>.pageTwo>.hotSongList {
+    margin-bottom: 10px;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li,
+.tabContent>.pageTwo>.hotSongList>ul>li {
+    padding: 6px 0px;
+    margin: 0px 0px 0px 14px;
+    border-bottom: 1px solid #E3E3E2;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li>.onlySong,
+.tabContent>.pageTwo>.hotSongList>ul>li>.onlySong {
+    display: inline-block;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li>.onlySong>span,
+.tabContent>.pageTwo>.hotSongList>ul>li>.onlySong>span {
+    display: block;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li>.onlySong>.songName,
+.tabContent>.pageTwo>.hotSongList>ul>li>.onlySong>.songName {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li>.onlySong>.singer,
+.tabContent>.pageTwo>.hotSongList>ul>li>.onlySong>.singer {
+    color: #878484;
+}
+
+.tabContent>.pageOne>.newSongList>ul>li>a>svg,
+.tabContent>.pageTwo>.hotSongList>ul>li>a>svg {
+    color: #A9A9A8;
+    float: right;
+    margin: 15px 10px 0px 0px;
+    width: 22px;
+    height: 22px;
+}
+
+.tabContent>.pageOne>.footerHint,
+.tabContent>.pageTwo>.footerHint {
+    margin: 40px 0 10px 0;
+    font-size: 8px;
+    color: #A7A09E;
+    text-align: center;
+}
+
+.tabContent>.pageOne>.footerHint>span,
+.tabContent>.pageTwo>.footerHint>span {
+    display: block;
+}
