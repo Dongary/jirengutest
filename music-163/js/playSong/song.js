@@ -1,19 +1,52 @@
 {
     let view = {
-        el: '#playSong',
-        template: `
-          <audio autoplay controls src={{url}}></audio>
-        `,
+        el: '#app',
+        init() {
+            this.$el = $(this.el)
+        },
         render(data) {
-            $(this.el).html(this.template.replace('{{url}}', data.url))
+            let { song, status } = data
+            this.$el.css('background-image', `url(${song.cover})`)
+            this.$el.find('img.cover').attr('src', song.cover)
+            this.$el.find('.song-description>h1').text(song.name)
+            if (this.$el.find('audio').attr('src') !== song.url) {
+                let audio = this.$el.find('audio').attr('src', song.url).get(0)
+                audio.onended = () => { window.eventHub.emit('songEnd') }
+            }
+            if (status === 'playing') {
+                this.$el.find('.disc-container').addClass('playing')
+            } else {
+                this.$el.find('.disc-container').removeClass('playing')
+            }
+            let { lyrics } = song
+            lyrics.split('\n').map((string) => {
+                let p = document.createElement('p')
+                p.textContent = string
+                this.$el.find('.lyric>.lines').append(p)
+            })
+        },
+        play() {
+            this.$el.find('audio')[0].play()
+        },
+        pause() {
+            this.$el.find('audio')[0].pause()
         }
     }
     let model = {
-        data: {},
+        data: {
+            song: {
+                id: '',
+                name: '',
+                singer: '',
+                url: '',
+                cover: ''
+            },
+            status: 'paused'
+        },
         get(id) {
             var query = new AV.Query('Song')
             return query.get(id).then((song) => {
-                Object.assign(this.data, { id: song.id, ...song.attributes })
+                Object.assign(this.data.song, { id: song.id, ...song.attributes })
                 return song
             })
         }
@@ -21,10 +54,29 @@
     let controller = {
         init(view, model) {
             this.view = view
+            this.view.init()
             this.model = model
             let id = this.getSongId()
             this.model.get(id).then(() => {
                 this.view.render(this.model.data)
+            })
+            this.bindEvents()
+        },
+        bindEvents() {
+            $(this.view.el).on('click', '.icon-wrapper', () => {
+                if (this.model.data.status === 'playing') {
+                    this.model.data.status = 'paused'
+                    this.view.render(this.model.data)
+                    this.view.pause()
+                } else {
+                    this.model.data.status = 'playing'
+                    this.view.render(this.model.data)
+                    this.view.play()
+                }
+                window.eventHub.on('songEnd', () => {
+                    this.model.data.status = 'paused'
+                    this.view.render(this.model.data)
+                })
             })
         },
         getSongId() {

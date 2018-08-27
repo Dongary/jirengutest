@@ -9,7 +9,7 @@
            </div>
            <a href="./playSong.html?id={{song.id}}" class="playButton">
              <svg class="icon" aria-hidden="true">
-               <use xlink:href="#icon-play"></use>
+               <use xlink:href="#icon-play2"></use>
              </svg>
            </a>
          </li>
