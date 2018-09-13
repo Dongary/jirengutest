@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '#song-list-container',
+        el: '#playlist',
         template: `
         <ul class="songList">
     
@@ -31,7 +31,7 @@
             selectSongId: undefined
         },
         find() {
-            var query = new AV.Query('Song')
+            var query = new AV.Query('Playlist')
             return query.find().then((songs) => {
 
                 this.data.songs = songs.map((song) => {

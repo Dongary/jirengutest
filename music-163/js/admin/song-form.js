@@ -33,6 +33,13 @@
             </div>
             <div class="row">
                 <label for="">
+                    歌单
+                </label>
+                <input name="depend" type="text" value="__depend__" size="35">
+
+            </div>
+            <div class="row">
+                <label for="">
                     歌词
                 </label>
                 <textarea cols=60 rows=20 name="lyrics">__lyrics__</textarea>
@@ -44,7 +51,7 @@
         </form>
         `,
         render(data = {}) {
-            let placeholders = ['name', 'singer', 'url', 'id', 'cover', 'lyrics']
+            let placeholders = ['name', 'singer', 'url', 'id', 'cover', 'depend', 'lyrics']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || '')
@@ -67,16 +74,19 @@
             url: '',
             id: '',
             cover: '',
+            depend: '',
             lyrics: ''
         },
         update(data) {
             // 更新歌曲某ID的信息
+            var playlist = AV.Object.createWithoutData('Playlist', data.depend)
             var song = AV.Object.createWithoutData('Song', this.data.id)
             song.set('name', data.name)
             song.set('singer', data.singer)
             song.set('lyrics', data.lyrics)
             song.set('url', data.url)
             song.set('cover', data.cover)
+            song.set('dependent', playlist)
             return song.save().then((response) => {
                 Object.assign(this.data, data)
                 return response
@@ -84,6 +94,7 @@
         },
         create(data) {
             //建立数据库Class（Song）
+            var playlist = AV.Object.createWithoutData('Playlist', data.depend)
             var Song = AV.Object.extend('Song');
             var song = new Song();
             song.set('name', data.name);
@@ -91,6 +102,7 @@
             song.set('lyrics', data.lyrics)
             song.set('url', data.url)
             song.set('cover', data.cover)
+            song.set('dependent', playlist)
             return song.save().then((newSong) => {
                 let { id, attributes } = newSong
                 Object.assign(this.data, { id, ...attributes })
@@ -120,6 +132,7 @@
                             id: '',
                             singer: '',
                             cover: '',
+                            depend: '',
                             lyrics: ''
                         }
                     } else {
@@ -129,12 +142,11 @@
                 })
         },
         create() {
-            let needs = 'name singer url cover lyrics'.split(' ')
+            let needs = 'name singer url cover depend lyrics'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()
             })
-
             this.model.create(data).then(() => {
                 this.view.reset()
                 let string = JSON.stringify(this.model.data)
@@ -143,7 +155,7 @@
             })
         },
         update() {
-            let needs = 'name singer url cover lyrics'.split(' ')
+            let needs = 'name singer url cover depend lyrics'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()

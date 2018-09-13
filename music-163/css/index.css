@@ -91,16 +91,17 @@ body {
     display: block;
 }
 
-.tabContent>.pageOne>.recomendSongList>.songLists,
-.tabContent>.pageTwo>.recomendSongList>.songLists {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 15px;
+.tabContent>.pageOne>.recomendSongList>ul,
+.tabContent>.pageTwo>.recomendSongList>ul {
+    width: 100%;
 }
 
-.tabContent>.pageOne>.recomendSongList>.songLists>div,
-.tabContent>.pageTwo>.recomendSongList>.songLists>div {
+.tabContent>.pageOne>.recomendSongList>ul>li,
+.tabContent>.pageTwo>.recomendSongList>ul>li {
     box-sizing: content-box;
+    display: inline-block;
+    margin-left: 1px;
+    margin-bottom: 15px;
     width: 33%;
     margin-right: 0px;
 }
@@ -110,14 +111,19 @@ body {
     margin: 0px 2px;
 }
 
-.tabContent>.pageOne>.recomendSongList>.songLists>div>img,
-.tabContent>.pageTwo>.recomendSongList>.songLists>div>img {
+.tabContent>.pageOne>.recomendSongList>ul>li>div>a,
+.tabContent>.pageTwo>.recomendSongList>ul>li>div>a {
     width: 100%;
 }
 
-.tabContent>.pageOne>.recomendSongList>.songLists>div>span,
-.tabContent>.pageTwo>.recomendSongList>.songLists>div>span {
-    display: block;
+.tabContent>.pageOne>.recomendSongList>ul>li>div>a>img,
+.tabContent>.pageTwo>.recomendSongList>ul>li>div>a>img {
+    width: 100%;
+}
+
+.tabContent>.pageOne>.recomendSongList>ul>li>div>span,
+.tabContent>.pageTwo>.recomendSongList>ul>li>div>span {
+    font-size: 2px;
 }
 
 .tabContent>.pageOne>.newSongList,
