@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.pageOne>section.recomendSongList',
+        el: '.pageTwo>section.recomendSongList',
         template: `
          <li>
           <div>

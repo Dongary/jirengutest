@@ -70,8 +70,22 @@ body {
     font-size: 16px;
     font-weight: bold;
     padding: 10px 0;
-    margin: 0px 30px;
+    margin: 0px 25px;
     border-bottom: 2px solid #FFFFFF;
+}
+
+@media screen and (max-width:340px) {
+    .navBar>div {
+        font-size: 14px;
+        margin: 0px 23px;
+    }
+}
+
+@media screen and (min-width:420px) {
+    .navBar>div {
+        font-size: 20px;
+        margin: 0px 30px;
+    }
 }
 
 .navBar>div.active {
@@ -104,11 +118,6 @@ body {
     margin-bottom: 15px;
     width: 33%;
     margin-right: 0px;
-}
-
-.tabContent>.pageOne>.recomendSongList>.songLists>.listTwo,
-.tabContent>.pageTwo>.recomendSongList>.songLists>.listTwo {
-    margin: 0px 2px;
 }
 
 .tabContent>.pageOne>.recomendSongList>ul>li>div>a,
@@ -179,4 +188,57 @@ body {
 .tabContent>.pageOne>.footerHint>span,
 .tabContent>.pageTwo>.footerHint>span {
     display: block;
+}
+
+.tabContent>.pageThree {
+    margin-top: 19px;
+    background-color: #FAFAFA;
+    border: 1px solid #CFCFCE;
+    border-radius: 32px;
+    width: 82%;
+    height: 32px;
+    margin-left: 24px;
+}
+
+.tabContent>.pageThree>.search>input {
+    background: none;
+    outline: none;
+    border: 0px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    color: #333;
+    line-height: 16px;
+    width: 80%;
+    margin-top: 8px;
+    margin-left: 20px;
+    padding: 0;
+    background: transparent;
+}
+
+.tabContent>.pageThree>.search>span {
+    display: inline-block;
+}
+
+.tabContent>.pageThree>.search>span>svg {
+    width: 15px;
+    height: 15px;
+    margin-left: 6px;
+}
+
+.tabContent>.pageThree>.textHint>ul>li>a {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 0px;
+    background: #FAFAFA;
+}
+
+.tabContent>.pageThree>.textHint>ul>li>a>span {
+    font-size: 15px;
+    color: #CFCFCE;
+    margin: 20px 10px;
 }

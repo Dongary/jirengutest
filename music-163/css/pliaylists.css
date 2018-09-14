@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::after {
+    box-sizing: border-box;
+}
+
+*::before {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    ;
+}
+
+body {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.Playlist>.listsimg {
+    height: 30vh;
+    position: relative;
+    z-index: 1;
+}
+
+.Playlist>.listsimg:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: inherit;
+    filter: blur(3px);
+    z-index: 2;
+}
+
+.Playlist>.listsimg>img {
+    width: 40%;
+    position: absolute;
+    top: 14%;
+    left: 4%;
+    z-index: 4;
+    display: inline-block;
+}
+
+.Playlist>.listsimg>span {
+    position: absolute;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    top: 30px;
+    left: 50%;
+    z-index: 5;
+}
+
+.Playlist>.liststitle {
+    margin: 10px 0;
+}
+
+.Playlist>.liststitle>span {
+    display: block;
+    margin-left: 15px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #7D7D7D;
+    line-height: 1.5;
+}
+
+.SongLists>.SongList {
+    margin-bottom: 10px;
+}
+
+.SongLists>.SongList>span {
+    display: block;
+    font-size: 8px;
+    font-weight: 600;
+    color: #7D7D7D;
+    background: #EDEEF0;
+    padding-left: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.SongLists>.SongList>ul>li {
+    padding: 6px 0px;
+    margin: 0px 0px 0px 14px;
+    border-bottom: 1px solid #E3E3E2;
+}
+
+.SongLists>.SongList>ul>li>.onlySong {
+    display: inline-block;
+}
+
+.SongLists>.SongList>ul>li>.onlySong>span {
+    display: block;
+}
+
+.SongLists>.SongList>ul>li>.onlySong>.songName {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.SongLists>.SongList>ul>li>.onlySong>.singer {
+    color: #878484;
+}
+
+.SongLists>.SongList>ul>li>a>svg {
+    color: #A9A9A8;
+    float: right;
+    margin: 15px 10px 0px 0px;
+    width: 22px;
+    height: 22px;
+}

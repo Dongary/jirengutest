@@ -1,14 +1,17 @@
 {
     let view = {
-        el: '.pageOne>section.recomendSongList',
+        el: 'section.hotSongList',
         template: `
          <li>
-          <div>
-            <a href="./playlists.html?id={{song.id}}">
-               <img src="{{song.cover}}" alt="">
-            </a>
-            <span>{{song.name}}</span>
-          </div>
+           <div class="onlySong">
+             <span class="songName">{{song.name}}</span>
+             <span class="singer">{{song.singer}}</span>
+           </div>
+           <a href="./playSong.html?id={{song.id}}" class="playButton">
+             <svg class="icon" aria-hidden="true">
+               <use xlink:href="#icon-play2"></use>
+             </svg>
+           </a>
          </li>
         `,
         init() {
@@ -16,14 +19,14 @@
         },
         render(data) {
             let { songs } = data
+            songs = songs.slice(0, 6)
             songs.map((song) => {
                 let $li = $(this.template
-                    .replace('{{song.name}}', song.name.slice(0, 6).concat('...'))
-                    .replace('{{song.cover}}', song.cover)
+                    .replace('{{song.name}}', song.name)
+                    .replace('{{song.singer}}', song.singer)
                     .replace('{{song.id}}', song.id)
                 )
                 this.$el.find('ul').append($li)
-
             })
         }
     }
@@ -32,7 +35,7 @@
             songs: []
         },
         find() {
-            var query = new AV.Query('Playlist')
+            var query = new AV.Query('Song')
             return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
                     //return { id: song.id, ...song.attributes }

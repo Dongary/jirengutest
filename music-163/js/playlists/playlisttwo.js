@@ -1,6 +1,6 @@
 {
     let view = {
-        el: 'section.newSongList',
+        el: '.SongLists>.SongList',
         template: `
          <li>
            <div class="onlySong">
@@ -19,8 +19,6 @@
         },
         render(data) {
             let { songs } = data
-            songs.reverse()
-            songs = songs.slice(0, 6)
             songs.map((song) => {
                 let $li = $(this.template
                     .replace('{{song.name}}', song.name)
@@ -35,8 +33,10 @@
         data: {
             songs: []
         },
-        find() {
-            var query = new AV.Query('Song')
+        find(id) {
+            var playlist = AV.Object.createWithoutData('Playlist', id)
+            var query = new AV.Query('Song');
+            query.equalTo('dependent', playlist);
             return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
                     //return { id: song.id, ...song.attributes }
@@ -51,13 +51,33 @@
             this.view = view
             this.view.init()
             this.model = model
-            this.model.find().then(() => {
+            let id = this.getSongId()
+            this.model.find(id).then(() => {
                 this.view.render(this.model.data)
             })
             this.bindEvents()
         },
         bindEvents() {
 
+        },
+        getSongId() {
+            let search = window.location.search
+            if (search.indexOf('?') === 0) {
+                search = search.substring(1)
+            }
+
+            let array = search.split('&').filter((v => v))
+            let id = ''
+            for (let i = 0; i < array.length; i++) {
+                let kv = array[i].split('=')
+                let key = kv[0]
+                let value = kv[1]
+                if (key === 'id') {
+                    id = value
+                    break
+                }
+            }
+            return id
         }
     }
     controller.init(view, model)
